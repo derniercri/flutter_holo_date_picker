@@ -1,11 +1,13 @@
 import 'dart:math';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
-import '../date_time_formatter.dart';
-import '../date_picker_theme.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:auto_size_text/auto_size_text.dart';
+
 import '../date_picker_constants.dart';
+import '../date_picker_theme.dart';
+import '../date_time_formatter.dart';
 import '../i18n/date_picker_i18n.dart';
 
 /// Solar months of 31 days.
@@ -205,8 +207,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                 selectionOverlay: Container(),
                 backgroundColor: widget.pickerTheme!.backgroundColor,
                 scrollController: scrollCtrl,
-                squeeze: 0.95,
-                diameterRatio: 1.5,
+                squeeze: widget.pickerTheme!.squeeze,
+                diameterRatio: widget.pickerTheme!.diameterRatio,
                 itemExtent: widget.pickerTheme!.itemHeight,
                 onSelectedItemChanged: valueChanged,
                 looping: widget.looping,
@@ -225,7 +227,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           ),
           Positioned(
             child: Container(
-                margin: const EdgeInsets.only(top: 63),
+                margin: EdgeInsets.only(top: widget.pickerTheme!.itemHeight),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -235,7 +237,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                         color: widget.pickerTheme!.dividerColor ??
                             widget.pickerTheme!.itemTextStyle.color,
                         height: 1,
-                        thickness: 2,
+                        thickness: widget.pickerTheme!.dividerThickness,
                       ),
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02)
@@ -244,7 +246,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           ),
           Positioned(
             child: Container(
-                margin: const EdgeInsets.only(top: 99),
+                margin:
+                    EdgeInsets.only(top: widget.pickerTheme!.itemHeight * 2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -254,7 +257,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                         color: widget.pickerTheme!.dividerColor ??
                             widget.pickerTheme!.itemTextStyle.color,
                         height: 1,
-                        thickness: 2,
+                        thickness: widget.pickerTheme!.dividerThickness,
                       ),
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),

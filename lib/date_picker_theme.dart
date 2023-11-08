@@ -22,6 +22,10 @@ const TextStyle DATETIME_PICKER_ITEM_TEXT_STYLE =
 const Color DATETIME_PICKER_ITEM_TEXT_COLOR = Colors.black;
 const double DATETIME_PICKER_ITEM_TEXT_SIZE_SMALL = 15;
 const double DATETIME_PICKER_ITEM_TEXT_SIZE_BIG = 17;
+const double DATETIME_PICKER_DIVIDER_THICKNESS = 2;
+
+const double DATETIME_PICKER_SQUEEZE = 0.95;
+const double DATETIME_PICKER_DIAMETER_RATIO = 1.5;
 
 /// To support both stable and beta channels until
 /// 'DiagnosticableMixin' is officially deprecated.
@@ -41,20 +45,22 @@ class DateTimePickerTheme {
   /// [titleHeight] The value of DatePicker's title height.
   /// [itemHeight] The value of DatePicker's column height.
   /// [itemTextStyle] The value of DatePicker's column [TextStyle].
-  const DateTimePickerTheme({
-    this.backgroundColor = DATETIME_PICKER_BACKGROUND_COLOR,
-    this.cancelTextStyle,
-    this.confirmTextStyle,
-    this.cancel,
-    this.confirm,
-    this.title,
-    this.showTitle = DATETIME_PICKER_SHOW_TITLE_DEFAULT,
-    this.pickerHeight = DATETIME_PICKER_HEIGHT,
-    this.titleHeight = DATETIME_PICKER_TITLE_HEIGHT,
-    this.itemHeight = DATETIME_PICKER_ITEM_HEIGHT,
-    this.itemTextStyle = DATETIME_PICKER_ITEM_TEXT_STYLE,
-    this.dividerColor,
-  });
+  const DateTimePickerTheme(
+      {this.backgroundColor = DATETIME_PICKER_BACKGROUND_COLOR,
+      this.cancelTextStyle,
+      this.confirmTextStyle,
+      this.cancel,
+      this.confirm,
+      this.title,
+      this.showTitle = DATETIME_PICKER_SHOW_TITLE_DEFAULT,
+      this.pickerHeight,
+      this.titleHeight = DATETIME_PICKER_TITLE_HEIGHT,
+      this.itemHeight = DATETIME_PICKER_ITEM_HEIGHT,
+      this.itemTextStyle = DATETIME_PICKER_ITEM_TEXT_STYLE,
+      this.dividerColor,
+      this.dividerThickness = DATETIME_PICKER_DIVIDER_THICKNESS,
+      this.squeeze = DATETIME_PICKER_SQUEEZE,
+      this.diameterRatio = DATETIME_PICKER_DIAMETER_RATIO});
 
   static const DateTimePickerTheme Default = const DateTimePickerTheme();
 
@@ -80,7 +86,7 @@ class DateTimePickerTheme {
   final bool showTitle;
 
   /// The value of DatePicker's height.
-  final double pickerHeight;
+  final double? pickerHeight;
 
   /// The value of DatePicker's title height.
   final double titleHeight;
@@ -93,4 +99,13 @@ class DateTimePickerTheme {
 
   /// The value of DatePicker's Divider Color [TextStyle].
   final Color? dividerColor;
+
+  /// The value of DatePicker's Divider thickness [TextStyle].
+  final double? dividerThickness;
+
+  /// The value of DatePicker's squeeze [TextStyle].
+  final double squeeze;
+
+  /// The value of DatePicker's diameterRatio [TextStyle].
+  final double diameterRatio;
 }

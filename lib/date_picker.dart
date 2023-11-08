@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_holo_date_picker/widget/date_ext.dart';
 
-import 'date_picker_theme.dart';
 import 'date_picker_constants.dart';
+import 'date_picker_theme.dart';
 import 'i18n/date_picker_i18n.dart';
 import 'widget/date_picker_widget.dart';
 
@@ -255,7 +256,7 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
-    double height = pickerTheme!.pickerHeight;
+    double height = pickerTheme!.pickerHeight ?? DATETIME_PICKER_HEIGHT;
     if (pickerTheme!.title != null || pickerTheme!.showTitle) {
       height += pickerTheme!.titleHeight;
     }
